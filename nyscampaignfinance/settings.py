@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'vjsa90pd)2b%5ae*hb7f#k1od==8**
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['nys-campaign-finance.herokuapp.com/','127.0.0.1']
+ALLOWED_HOSTS = ['nys-campaign-finance.herokuapp.com','127.0.0.1']
 
 
 # Application definition
