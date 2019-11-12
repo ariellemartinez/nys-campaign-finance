@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 # Create your views here.
 
 def contributions(request, category_in, year, zip_code_3):
-	url = "http://www.elections.state.ny.us:8080/plsql_browser/CONTRIBUTORC_COUNTY?CATEGORY_IN=" + category_in + "&OFFICE_IN=ALL&county_IN=ALL&date_from=01%2F01%2F" + str(year) + "&date_to=12%2F31%2F" + str(year) + "&AMOUNT_from=.99&AMOUNT_to=999999999.99&ZIP1=" + str(zip_code_3) + "00&ZIP2=" + str(zip_code_3) + "99&ORDERBY_IN=N"
+	url = "https://cfapp.elections.ny.gov/ords/plsql_browser/CONTRIBUTORC_COUNTY?CATEGORY_IN=" + category_in + "&OFFICE_IN=ALL&county_IN=ALL&date_from=01%2F01%2F" + str(year) + "&date_to=12%2F31%2F" + str(year) + "&AMOUNT_from=.99&AMOUNT_to=999999999.99&ZIP1=" + str(zip_code_3) + "00&ZIP2=" + str(zip_code_3) + "99&ORDERBY_IN=N"
 	webpage_response = requests.get(url)
 	webpage = webpage_response.content
 	soup = BeautifulSoup(webpage, "html.parser")
@@ -22,7 +22,7 @@ def contributions(request, category_in, year, zip_code_3):
 		row_link = ""
 		for a_tag in row.find_all('a'):
 			row_a_href = a_tag.get('href')
-			row_link = "http://www.elections.state.ny.us:8080" + row_a_href
+			row_link = "https://cfapp.elections.ny.gov" + row_a_href
 		row_data = []
 		for data_tag in row_data_tags:
 			row_data.append(data_tag.get_text(', ').strip())
